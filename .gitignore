@@ -15,9 +15,11 @@ backblue.gif
 fade.gif
 
 # --- Tooling ----------------------------------------------------------------
-.vercel/
-node_modules/
-vendor/
+/.vercel/
+/node_modules/
+# NOTE: root-anchored on purpose. A bare "vendor/" would also swallow
+# cdn11.editmysite.com/images/vendor/select2/, which sites.css actually uses.
+/vendor/
 
 # --- OS / editor cruft ------------------------------------------------------
 Thumbs.db

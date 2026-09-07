@@ -1,0 +1,30 @@
+# --- Form submissions -------------------------------------------------------
+# contact.php appends every submission here: names, email addresses, phone
+# numbers and order details. This must NEVER be committed or deployed.
+form-submissions.log
+*.log
+
+# --- HTTrack crawler artifacts ----------------------------------------------
+# Removed from the repo already. Listed so that re-running the mirror to refresh
+# the site does not drag the crawler's working files back in.
+hts-cache/
+hts-log.txt
+hts-err.txt
+cookies.txt
+backblue.gif
+fade.gif
+
+# --- Tooling ----------------------------------------------------------------
+.vercel/
+node_modules/
+vendor/
+
+# --- OS / editor cruft ------------------------------------------------------
+Thumbs.db
+ehthumbs.db
+desktop.ini
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~

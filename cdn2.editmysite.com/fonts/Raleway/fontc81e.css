@@ -1,0 +1,66 @@
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 200;
+  src: url('ultralight.eot'); /* IE9 Compat Modes */
+  src: url('ultralightd41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('ultralight.woff2') format('woff2'), /* Super Modern Browsers */
+       url('ultralight.woff') format('woff'), /* Modern Browsers */
+       url('ultralight.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  src: url('light.eot'); /* IE9 Compat Modes */
+  src: url('lightd41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('light.woff2') format('woff2'), /* Super Modern Browsers */
+       url('light.woff') format('woff'), /* Modern Browsers */
+       url('light.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: url('regular.eot'); /* IE9 Compat Modes */
+  src: url('regulard41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('regular.woff') format('woff'), /* Modern Browsers */
+       url('regular.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 500;
+  src: url('medium.eot'); /* IE9 Compat Modes */
+  src: url('mediumd41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('medium.woff2') format('woff2'), /* Super Modern Browsers */
+       url('medium.woff') format('woff'), /* Modern Browsers */
+       url('medium.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  src: url('semibold.eot'); /* IE9 Compat Modes */
+  src: url('semiboldd41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('semibold.woff2') format('woff2'), /* Super Modern Browsers */
+       url('semibold.woff') format('woff'), /* Modern Browsers */
+       url('semibold.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  src: url('bold.eot'); /* IE9 Compat Modes */
+  src: url('boldd41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('bold.woff2') format('woff2'), /* Super Modern Browsers */
+       url('bold.woff') format('woff'), /* Modern Browsers */
+       url('bold.ttf') format('truetype'); /* Safari, Android, iOS */
+}

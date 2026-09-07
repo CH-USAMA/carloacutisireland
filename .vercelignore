@@ -1,0 +1,10 @@
+# Vercel serves static files only — it does not execute PHP. Anything PHP left in
+# the deployment would be served as PLAIN TEXT, exposing its source and the
+# addresses configured inside it. Keep these in git (the real PHP host needs
+# them) but never ship them to Vercel.
+contact.php
+.htaccess
+
+# Logs and docs don't belong on the CDN.
+*.log
+ARCHIVE-README.md

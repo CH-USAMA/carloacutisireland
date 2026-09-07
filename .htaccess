@@ -1,0 +1,13 @@
+# Protect form submission logs — they contain names, emails, phone numbers and
+# order details. Without this, anyone could fetch the log over the web.
+<FilesMatch "\.(log|ini)$">
+    Require all denied
+</FilesMatch>
+
+# Fallback for Apache 2.2
+<IfModule !mod_authz_core.c>
+    <FilesMatch "\.(log|ini)$">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+</IfModule>

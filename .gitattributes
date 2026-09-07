@@ -1,0 +1,5 @@
+# This repository is an archival mirror of a website. Preserve every file exactly
+# as it was captured — no line-ending conversion, no normalisation. Git's default
+# autocrlf on Windows would otherwise rewrite LF to CRLF on checkout and change
+# the bytes that get served.
+* -text

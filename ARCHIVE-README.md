@@ -30,9 +30,14 @@ hosting cannot accept a POST at all. `.vercelignore` therefore excludes
 its source and the addresses inside it. On the demo, submitting a form gives a 404.
 That is expected; tell the client the forms activate on the real host.
 
-`vercel.json` also sets `X-Robots-Tag: noindex, nofollow` on everything, so the demo
-cannot be indexed and compete with the live site in search results.
-**Remove that header when this becomes the production site.**
+**Indexing.** The `noindex` header has been removed, so the deployment is crawlable and
+link previews work when you share it. Every page instead carries
+`<link rel="canonical">` pointing at `https://www.carloacutisireland.org/`, which tells
+search engines the content belongs to the real domain rather than to the deployment URL.
+That is what prevents the preview from competing with the live site as duplicate content.
+
+Those canonicals are already correct for production: once the domain points at this
+build, each page canonicalises to itself and nothing needs changing.
 
 ### PHP hosting (production)
 

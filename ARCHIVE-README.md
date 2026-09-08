@@ -42,6 +42,48 @@ header from `vercel.json` (or just delete the file if you are not using Vercel).
 
 ---
 
+## Redesign (this branch)
+
+`main` and the tag `v1-weebly-archive` hold the repaired Weebly site — that is the
+fallback and it stays untouched. This `redesign` branch rebuilds the site properly.
+
+**Phase 1 is the home page only.** `index.html` is new; the other five pages are still
+the old Weebly markup, so the design changes as you navigate. That is expected until
+Phase 2.
+
+```
+index.html            rebuilt home page
+assets/css/site.css   design system — tokens, layout, components
+assets/js/site.js     nav, scroll reveal, video facades, lightbox (no dependencies)
+assets/fonts/         Lora + Lato + Montserrat, woff2 only
+assets/img/video/     local YouTube poster frames
+assets/img/favicon.svg
+```
+
+Approach: plain static HTML, hand-written CSS, vanilla JS. No framework and no build
+step, so it deploys identically to a static host and to PHP hosting, and there is no
+toolchain to maintain. Tailwind was considered and skipped — its CDN build is not
+production-grade, and a compiled setup would add npm to a six-page brochure site.
+
+Weight: **55 KB of HTML+CSS+JS, against 1,619 KB** of Weebly framework before, plus
+175 KB of fonts against 3.9 MB. No jQuery.
+
+What changed beyond styling:
+- One `<h1>` (the old pages had none at all), real alt text written from looking at
+  each photograph, skip link, visible focus states, semantic landmarks.
+- Favicon and JSON-LD `Organization` data — the site had neither.
+- The three YouTube iframes became click-to-load facades with local poster frames, so
+  the page loads no third-party script or cookie until someone presses play.
+- The prayer form no longer sits on top of Carlo's face. The photograph gets its own
+  panel and the form a solid surface, which is what makes it legible.
+- Form inputs are fluid; the old hard-coded 370px inputs were the one genuine mobile
+  problem on the original.
+- All motion is wrapped in `prefers-reduced-motion`.
+
+Verified at 390px: `scrollWidth === innerWidth`, no overflow. Clean console.
+
+---
+
 ## What was repaired
 
 1. **9 broken background images.** HTTrack mis-parsed Weebly's escaped quotes in the
@@ -85,8 +127,12 @@ header from `vercel.json` (or just delete the file if you are not using Vercel).
   including assets referenced from inside CSS.
 - All 6 pages render correctly in headless Chrome with a clean console.
 - At 390px the local copy rendered **byte-for-byte identically** to the live site, so
-  mobile layout is faithful. (The slight horizontal overflow on narrow screens exists
-  on the live site too and was not introduced here.)
+  mobile layout is faithful.
+  (Correction: an earlier note here claimed the live site had a horizontal overflow on
+  narrow screens. That was wrong — it was an artefact of headless Chrome, which forces a
+  500px minimum layout viewport regardless of the window size you ask for, so any page
+  captured that way looks clipped. Measured properly in a 390px iframe,
+  `scrollWidth === innerWidth === 390`: no overflow.)
 - Both forms were driven end-to-end through the real page markup with Weebly's JS
   running, and `contact.php` received every field correctly.
 

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Carlo Acutis Ireland">
+  <rect width="64" height="64" rx="12" fill="#0E333A"/>
+  <!-- Monstrance: radiating rays around a central host -->
+  <g stroke="#D6A64C" stroke-width="2.4" stroke-linecap="round">
+    <path d="M32 9v6M32 49v6M9 32h6M49 32h6"/>
+    <path d="M15.8 15.8l4.2 4.2M44 44l4.2 4.2M48.2 15.8L44 20M20 44l-4.2 4.2"/>
+  </g>
+  <circle cx="32" cy="32" r="12.5" fill="none" stroke="#D6A64C" stroke-width="2.6"/>
+  <circle cx="32" cy="32" r="7.5" fill="#FAF8F5"/>
+  <path d="M32 26.5v11M27.6 30.2h8.8" stroke="#0E333A" stroke-width="1.9" stroke-linecap="round"/>
+</svg>

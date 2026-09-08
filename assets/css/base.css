@@ -130,3 +130,41 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   .spine-word{letter-spacing:.16em}
   .spine-count{font-size:calc(var(--t-meta) * .85)}
 }
+
+/* ==========================================================================
+   Global components — defined once here, used across pages.
+   The colophon and the honeypot are the same object everywhere, and the form
+   field shell is shared by the register and the order sheet. Page stylesheets
+   override only what genuinely differs (textarea heights, for instance).
+   ========================================================================== */
+
+/* --- Colophon ------------------------------------------------------------- */
+.colophon{margin-top:clamp(1.5rem,4vh,2.5rem);border-top:1px solid var(--ink);padding-block:clamp(2.25rem,5vh,3.25rem) clamp(3rem,7vh,4.5rem)}
+.colophon-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.75rem clamp(1.5rem,3vw,3rem)}
+@media (max-width:760px){.colophon-grid{grid-template-columns:1fr}}
+.colophon h2{font:400 var(--t-meta)/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:1rem}
+.colophon ul li{margin-bottom:.55rem}
+.colophon a{border-bottom:1px solid transparent;transition:color .2s var(--ease),border-color .2s var(--ease)}
+.colophon a:hover{color:var(--oxblood);border-bottom-color:var(--oxblood)}
+.colophon .cont{font-family:var(--serif);font-size:1.05rem;line-height:1.5}
+.colophon .cont a{border-bottom-color:var(--rule)}
+.colophon-end{
+  margin-top:clamp(2rem,5vh,3rem);padding-top:1.25rem;border-top:1px solid var(--rule-soft);
+  display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between;
+  font:400 calc(var(--t-meta) * .95)/1.6 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--ink-mute);
+}
+
+/* --- Honeypot: hidden from people, filled in by bots ---------------------- */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* --- Form field shell ----------------------------------------------------- */
+.fld{margin-bottom:1.15rem}
+.fld .req{color:var(--oxblood)}
+.fld input,.fld textarea{
+  width:100%;padding:.75rem .85rem;font:400 1rem/1.5 var(--sans);color:var(--ink);
+  background:var(--white);border:1px solid var(--rule);border-radius:0;
+  transition:border-color .22s var(--ease),box-shadow .22s var(--ease);
+}
+.fld input:focus,.fld textarea:focus{outline:0;border-color:var(--ink);box-shadow:0 0 0 2px rgba(140,58,43,.12)}
+.fld-pair{display:grid;grid-template-columns:1fr 1fr;gap:0 1.1rem}
+@media (max-width:560px){.fld-pair{grid-template-columns:1fr}}

@@ -23,12 +23,6 @@
 }
 .opening h1 .ie{display:block;font-style:italic;color:var(--ink-mid)}
 
-.opening-statement{
-  max-width:46ch;margin-top:clamp(1.75rem,4vh,2.75rem);
-  font-size:var(--t-body);color:var(--ink-mid);
-}
-.opening-statement em{font-family:var(--serif);font-style:italic;color:var(--ink)}
-
 /* ---- Frontispiece ----------------------------------------------------
    A printed catalogue puts a plate facing its title page. This is that: one
    portrait, modestly sized and captioned like an archival print, beside a

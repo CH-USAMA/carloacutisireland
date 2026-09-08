@@ -131,13 +131,8 @@
     pImg.hidden = false;
 
     var film = r.dataset.film;
-    if (film) {
-      pImg.src = r.dataset.plate;
-      pImg.alt = r.dataset.alt || '';
-    } else {
-      pImg.src = r.dataset.plate;
-      pImg.alt = r.dataset.alt || '';
-    }
+    pImg.src = r.dataset.plate;
+    pImg.alt = r.dataset.alt || '';
     pNo.textContent = r.dataset.plateNo || '';
     pTtl.textContent = r.dataset.caption || '';
     pMeta.textContent = r.dataset.meta || '';

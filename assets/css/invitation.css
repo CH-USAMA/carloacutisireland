@@ -133,22 +133,6 @@
   font-size:1.05rem;line-height:1.55;
 }
 
-/* --- Colophon (shared shape, page-specific content) ---------------------- */
-.colophon{margin-top:clamp(1.5rem,4vh,2.5rem);border-top:1px solid var(--ink);padding-block:clamp(2.25rem,5vh,3.25rem) clamp(3rem,7vh,4.5rem)}
-.colophon-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.75rem clamp(1.5rem,3vw,3rem)}
-@media (max-width:760px){.colophon-grid{grid-template-columns:1fr}}
-.colophon h2{font:400 var(--t-meta)/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:1rem}
-.colophon ul li{margin-bottom:.55rem}
-.colophon a{border-bottom:1px solid transparent;transition:color .2s var(--ease),border-color .2s var(--ease)}
-.colophon a:hover{color:var(--oxblood);border-bottom-color:var(--oxblood)}
-.colophon .cont{font-family:var(--serif);font-size:1.05rem;line-height:1.5}
-.colophon .cont a{border-bottom-color:var(--rule)}
-.colophon-end{
-  margin-top:clamp(2rem,5vh,3rem);padding-top:1.25rem;border-top:1px solid var(--rule-soft);
-  display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between;
-  font:400 calc(var(--t-meta) * .95)/1.6 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--ink-mute);
-}
-
 /* --- Narrow --------------------------------------------------------------- */
 @media (max-width:720px){
   .step{grid-template-columns:minmax(0,1fr);gap:.75rem}

@@ -1,0 +1,158 @@
+/* ==========================================================================
+   THE INVITATION — the Schools page's grammar.
+   Loads on top of base.css.
+
+   The only page that raises its voice. Where the catalogue whispers and the
+   monograph reads, this one speaks directly to a teacher: second person,
+   present tense, the largest type on the site, and four numbered steps as the
+   architecture. No cards, no boxes, no grid of three.
+   ========================================================================== */
+
+.inv-shell{padding-inline:var(--pad);max-width:1180px;margin-inline:auto}
+
+/* --- Opening -------------------------------------------------------------
+   A question, at the size of a question that expects an answer.
+------------------------------------------------------------------------- */
+.iv-open{padding-block:clamp(3.5rem,10vh,7rem) clamp(2.5rem,6vh,4rem)}
+.iv-top{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.iv-top a{color:var(--ink-mute);border-bottom:1px solid transparent;transition:color .2s var(--ease),border-color .2s var(--ease)}
+.iv-top a:hover{color:var(--ink);border-bottom-color:var(--rule)}
+
+.ask-big{
+  margin:clamp(2.5rem,8vh,5rem) 0 0;font-family:var(--serif);font-weight:400;
+  font-size:clamp(2.5rem,1.1rem + 6.4vw,6.8rem);line-height:.98;letter-spacing:-.035em;
+  max-width:16ch;text-wrap:balance;color:var(--ink);
+}
+.ask-big .q{color:var(--oxblood)}
+
+.iv-answer{
+  margin-top:clamp(2rem,5vh,3.25rem);max-width:46ch;
+  font-family:var(--serif);font-size:clamp(1.15rem,1rem + .85vw,1.7rem);
+  line-height:1.44;color:var(--ink-mid);
+}
+.iv-who{
+  margin-top:clamp(1.75rem,4vh,2.5rem);padding-top:1.15rem;border-top:1px solid var(--ink);
+  display:flex;flex-wrap:wrap;gap:.5rem 2.25rem;
+  font:400 var(--t-meta)/1.6 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);
+}
+
+/* --- Photography ---------------------------------------------------------
+   Warmer than the archive plates: no desaturation. These are happening now,
+   not being evidenced. Never wider than the file itself.
+------------------------------------------------------------------------- */
+.iv-plate{margin-block:clamp(2.5rem,7vh,5rem)}
+.iv-plate figure{margin:0}
+.iv-plate img{width:100%;display:block}
+.iv-plate figcaption{
+  margin-top:.85rem;padding-top:.7rem;border-top:1px solid var(--rule);
+  font:400 var(--t-meta)/1.6 var(--mono);letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-mute);max-width:46ch;
+}
+.iv-plate--l figure{max-width:860px}
+.iv-plate--r figure{max-width:640px;margin-left:auto}
+.iv-plate--r figcaption{margin-left:auto;text-align:right}
+
+/* --- The steps -----------------------------------------------------------
+   The architecture of the page. A monumental numeral, a short block, a rule.
+   Deliberately not three cards in a row.
+------------------------------------------------------------------------- */
+.steps{padding-block:clamp(2rem,5vh,3.5rem)}
+.steps-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  padding-bottom:1rem;border-bottom:1px solid var(--ink);margin-bottom:clamp(1rem,3vh,2rem);
+}
+.steps-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,1.1rem + 1.7vw,2.5rem);letter-spacing:-.015em}
+
+.step{
+  display:grid;grid-template-columns:clamp(5rem,11vw,10rem) minmax(0,1fr);
+  gap:0 clamp(1.5rem,4vw,4rem);align-items:start;
+  padding-block:clamp(2rem,5.5vh,3.75rem);border-bottom:1px solid var(--rule-soft);
+}
+.step:last-of-type{border-bottom:1px solid var(--ink)}
+.step .n{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(3rem,1.5rem + 5.4vw,7.5rem);line-height:.82;letter-spacing:-.045em;
+  color:var(--oxblood);font-variant-numeric:lining-nums;
+}
+.step h3{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(1.35rem,1.05rem + 1.35vw,2.15rem);line-height:1.12;letter-spacing:-.018em;
+  max-width:22ch;
+}
+.step p{
+  margin:1rem 0 0;font-size:clamp(1rem,.97rem + .2vw,1.1rem);line-height:1.6;
+  color:var(--ink-mid);max-width:52ch;
+}
+.step a{border-bottom:1px solid var(--rule);transition:color .2s var(--ease),border-color .2s var(--ease)}
+.step a:hover{color:var(--oxblood);border-bottom-color:var(--oxblood)}
+
+/* --- What a workshop can include -----------------------------------------
+   A menu, set large. Not bullets, not a grid of tiles.
+------------------------------------------------------------------------- */
+.menu{padding-block:clamp(3rem,8vh,5.5rem)}
+.menu h2{
+  font:400 var(--t-meta)/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink-mute);margin-bottom:clamp(1.5rem,4vh,2.5rem);
+}
+.menu ul{max-width:none}
+.menu li{
+  font-family:var(--serif);font-size:clamp(1.5rem,1.1rem + 1.9vw,3rem);
+  line-height:1.18;letter-spacing:-.022em;color:var(--ink);
+  padding:.45rem 0;max-width:15em;
+}
+.menu li + li{border-top:1px solid var(--rule-soft)}
+.menu .also{
+  margin-top:clamp(1.75rem,4vh,2.5rem);max-width:44ch;
+  font-family:var(--serif);font-style:italic;font-size:1.15rem;line-height:1.5;color:var(--ink-mid);
+}
+
+/* --- The ask -------------------------------------------------------------
+   Email-led, because that is genuinely how this works. One address, large.
+------------------------------------------------------------------------- */
+.invite{
+  padding-block:clamp(3.5rem,9vh,6rem);border-top:1px solid var(--ink);
+}
+.invite h2{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(1.75rem,1.15rem + 2.4vw,3.4rem);line-height:1.06;letter-spacing:-.025em;
+  max-width:18ch;
+}
+.invite p{margin-top:1.25rem;max-width:48ch;font-size:1.06rem;line-height:1.6;color:var(--ink-mid)}
+.mailto{
+  display:inline-flex;align-items:baseline;gap:.85rem;margin-top:clamp(2rem,5vh,3rem);
+  font-family:var(--serif);font-size:clamp(1.3rem,1rem + 1.5vw,2.4rem);
+  letter-spacing:-.018em;color:var(--ink);
+  border-bottom:1px solid var(--rule);padding-bottom:.4rem;
+  transition:color .25s var(--ease),border-color .25s var(--ease),gap .25s var(--ease);
+}
+.mailto:hover{color:var(--oxblood);border-bottom-color:var(--oxblood);gap:1.4rem}
+.mailto .arw{font-size:.6em}
+.invite-note{
+  margin-top:clamp(2rem,5vh,3rem);padding-top:1.25rem;border-top:1px solid var(--rule-soft);
+  max-width:46ch;font-family:var(--serif);font-style:italic;color:var(--ink-mute);
+  font-size:1.05rem;line-height:1.55;
+}
+
+/* --- Colophon (shared shape, page-specific content) ---------------------- */
+.colophon{margin-top:clamp(1.5rem,4vh,2.5rem);border-top:1px solid var(--ink);padding-block:clamp(2.25rem,5vh,3.25rem) clamp(3rem,7vh,4.5rem)}
+.colophon-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.75rem clamp(1.5rem,3vw,3rem)}
+@media (max-width:760px){.colophon-grid{grid-template-columns:1fr}}
+.colophon h2{font:400 var(--t-meta)/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:1rem}
+.colophon ul li{margin-bottom:.55rem}
+.colophon a{border-bottom:1px solid transparent;transition:color .2s var(--ease),border-color .2s var(--ease)}
+.colophon a:hover{color:var(--oxblood);border-bottom-color:var(--oxblood)}
+.colophon .cont{font-family:var(--serif);font-size:1.05rem;line-height:1.5}
+.colophon .cont a{border-bottom-color:var(--rule)}
+.colophon-end{
+  margin-top:clamp(2rem,5vh,3rem);padding-top:1.25rem;border-top:1px solid var(--rule-soft);
+  display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between;
+  font:400 calc(var(--t-meta) * .95)/1.6 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--ink-mute);
+}
+
+/* --- Narrow --------------------------------------------------------------- */
+@media (max-width:720px){
+  .step{grid-template-columns:minmax(0,1fr);gap:.75rem}
+  .step .n{font-size:clamp(2.75rem,12vw,4rem);line-height:1}
+  .iv-plate--r figure{margin-left:0}
+  .iv-plate--r figcaption{margin-left:0;text-align:left}
+}

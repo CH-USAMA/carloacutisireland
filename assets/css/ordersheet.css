@@ -121,3 +121,47 @@
   .line-price small{display:inline;margin-left:.5rem}
   .line-qty{grid-area:qty;align-self:center}
 }
+
+/* --- Viewing the goods ---------------------------------------------------
+   Click a product to see it larger. Deliberately NOT the catalogue's plate:
+   that is a dark, archival surface for evidence, and these are goods. Light
+   ground, no crop marks, and the name and price stay with the picture.
+------------------------------------------------------------------------- */
+.line-img a{display:block;width:100%;height:100%;cursor:zoom-in}
+.line-img a:focus-visible{outline:2px solid var(--oxblood);outline-offset:2px}
+
+.view{
+  position:fixed;inset:0;z-index:80;display:none;
+  background:rgba(242,237,228,.97);
+  padding:clamp(1rem,3vw,2.5rem);
+  opacity:0;transition:opacity .25s var(--ease);
+}
+.view.is-open{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+.view.is-shown{opacity:1}
+.view:focus{outline:0}
+
+.view-top{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;
+  padding-bottom:.8rem;border-bottom:1px solid var(--rule)}
+.view-close,.view-nav button{
+  font:400 var(--t-meta)/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-mute);display:inline-flex;align-items:center;gap:.55rem;
+  transition:color .25s var(--ease);
+}
+.view-close:hover,.view-nav button:hover{color:var(--ink)}
+.view-nav{display:flex;gap:1.75rem;align-items:center}
+.view-nav button[disabled]{opacity:.3;cursor:default}
+
+.view-fig{margin:0;min-height:0;display:grid;place-items:center;padding-block:clamp(1rem,3vh,2rem)}
+.view-fig img{
+  max-width:100%;max-height:100%;object-fit:contain;
+  transform:scale(.985);transition:transform .35s var(--ease);
+}
+.view.is-shown .view-fig img{transform:none}
+
+.view-foot{
+  display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  padding-top:.85rem;border-top:1px solid var(--rule);
+}
+.view-name{font-family:var(--serif);font-size:clamp(1.1rem,1rem + .6vw,1.5rem);color:var(--ink)}
+.view-price{font:400 1.05rem/1.4 var(--mono);letter-spacing:.04em;color:var(--ink);font-variant-numeric:tabular-nums}
+.view-note{font:400 calc(var(--t-meta) * .95)/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute)}

@@ -42,6 +42,19 @@ header from `vercel.json` (or just delete the file if you are not using Vercel).
 
 ---
 
+## Two repositories
+
+This work lives in two places, on purpose:
+
+| Repo | Holds | Deploy |
+|---|---|---|
+| **[CH-USAMA/carloacutisireland](https://github.com/CH-USAMA/carloacutisireland)** | The repaired Weebly archive on `main`, and the tag `v1-weebly-archive`. The fallback if anything is ever needed back. | not deployed |
+| **[CH-USAMA/carloacutisireland-2026](https://github.com/CH-USAMA/carloacutisireland-2026)** | The rebuild, on `main`. Seven pages, no framework. | Vercel |
+
+The rebuild's history runs back through the archive work, so the lineage is intact in
+both. The local `redesign` branch tracks `carloacutisireland-2026/main`; a snapshot of
+the same history also sits on `carloacutisireland/redesign`.
+
 ## Redesign (this branch)
 
 `main` and the tag `v1-weebly-archive` hold the repaired Weebly site — the fallback,

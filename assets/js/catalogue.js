@@ -164,7 +164,7 @@
     plate.removeAttribute('aria-hidden');
     doc.body.style.overflow = 'hidden';
     requestAnimationFrame(function () { plate.classList.add('is-shown'); });
-    plate.querySelector('.plate-close').focus();
+    plate.focus();
   }
 
   function close() {

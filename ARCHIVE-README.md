@@ -44,43 +44,72 @@ header from `vercel.json` (or just delete the file if you are not using Vercel).
 
 ## Redesign (this branch)
 
-`main` and the tag `v1-weebly-archive` hold the repaired Weebly site — that is the
-fallback and it stays untouched. This `redesign` branch rebuilds the site properly.
+`main` and the tag `v1-weebly-archive` hold the repaired Weebly site — the fallback,
+untouched. This branch is the redesign, and it is complete: seven pages.
 
-**Phase 1 is the home page only.** `index.html` is new; the other five pages are still
-the old Weebly markup, so the design changes as you navigate. That is expected until
-Phase 2.
+**One design DNA, seven visual grammars.** `assets/css/base.css` defines the shared
+materials once — Cardo and Lato, the warm ivory paper, warm black ink, the single
+oxblood accent, hairline rules, the spine, and the motion policy. Each page then loads
+its own grammar on top. Same family, different rooms.
 
-```
-index.html            rebuilt home page
-assets/css/site.css   design system — tokens, layout, components
-assets/js/site.js     nav, scroll reveal, video facades, lightbox (no dependencies)
-assets/fonts/         Lora + Lato + Montserrat, woff2 only
-assets/img/video/     local YouTube poster frames
-assets/img/favicon.svg
-```
+| Page | Grammar | Body face | Structure | Spine |
+|---|---|---|---|---|
+| `index.html` | **The Catalogue** | Lato | filtered index of records | full |
+| `about.html` | **The Monograph** | **Cardo** | prose essay, dates in the margin | date rail |
+| `relicvisit.html` | **The Register** | Lato | ruled ledger, blank final line | full |
+| `schoolworkshops.html` | **The Invitation** | Lato | four monumental steps | full |
+| `youth.html` | **The Voices** | Cardo *for speech only* | first person | full |
+| `prayer.html` | **The Chapel** | **Cardo** | almost nothing | **withdrawn** |
+| `shop.html` | **The Order Sheet** | Lato | ruled price list | full |
 
-Approach: plain static HTML, hand-written CSS, vanilla JS. No framework and no build
-step, so it deploys identically to a static host and to PHP hosting, and there is no
-toolchain to maintain. Tailwind was considered and skipped — its CDN build is not
-production-grade, and a compiled setup would add npm to a six-page brochure site.
+No component appears on more than two pages, except the spine and the colophon.
 
-Weight: **55 KB of HTML+CSS+JS, against 1,619 KB** of Weebly framework before, plus
-175 KB of fonts against 3.9 MB. No jQuery.
+### What each room does differently
 
-What changed beyond styling:
-- One `<h1>` (the old pages had none at all), real alt text written from looking at
-  each photograph, skip link, visible focus states, semantic landmarks.
-- Favicon and JSON-LD `Organization` data — the site had neither.
-- The three YouTube iframes became click-to-load facades with local poster frames, so
-  the page loads no third-party script or cookie until someone presses play.
-- The prayer form no longer sits on top of Carlo's face. The photograph gets its own
-  panel and the form a solid surface, which is what makes it legible.
-- Form inputs are fluid; the old hard-coded 370px inputs were the one genuine mobile
-  problem on the original.
-- All motion is wrapped in `prefers-reduced-motion`.
+- **Catalogue** — no hero. An index whose numbers are identity, so filtering moves
+  records rather than renumbering them. Opening one hands the viewport to the
+  photograph that evidences it.
+- **Monograph** — the grammar inverts: Cardo becomes the reading face. A sticky date in
+  the margin follows the passage being read; that is the whole date rail, with no
+  script. The death is given silence on both sides.
+- **Register** — a parish register, not a map or a route. Its last line is deliberately
+  blank: "Your parish". The request form completes the ledger.
+- **Invitation** — the only page that raises its voice. The organisation's own question
+  at 6.8rem, four steps as monumental numerals, email-led because that is the real
+  process.
+- **Voices** — Cardo marks speech and nothing else. One real quotation, given a whole
+  screen, with the county last.
+- **Chapel** — the spine withdraws. The official prayer set by sense rather than by
+  measure, with the rubric in red, as a rubric has always been.
+- **Order sheet** — no cart, no checkout, no stock, no payment provider, because the
+  organisation genuinely takes orders by hand. Prices are real text for the first time.
 
-Verified at 390px: `scrollWidth === innerWidth`, no overflow. Clean console.
+### Content extracted from pixels
+
+Two sets of information existed only inside images and are now real, searchable,
+screen-readable text:
+
+- **Ten sayings of Carlo's**, from a PNG on the About page — which is why he speaks in
+  his own voice through the monograph.
+- **Eleven product names and prices**, from the shop PNGs. Prices can now be changed
+  without opening Photoshop. Product thumbnails were regenerated at 260px: **4.0 MB of
+  source PNGs became 156 KB**.
+
+### Forms
+
+`contact.php` now serves three form types — `prayer`, `order` and `relic` — sharing one
+honeypot, one time gate and one per-IP rate limit. All three were driven end to end.
+Mail delivery itself remains the one thing untestable here; see the warning below.
+
+### Verified across all seven pages
+
+`h1` = 1 · alt text on every image · skip link · console clean · **390px scrollWidth
+equals innerWidth on every page** · the bare test passes (JavaScript off, motion off,
+images hidden, the identity still holds).
+
+Pages are 7–26 KB of HTML each. Prayer and Schools ship no JavaScript at all.
+
+---
 
 ---
 

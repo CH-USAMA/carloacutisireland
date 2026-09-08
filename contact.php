@@ -23,6 +23,7 @@ declare(strict_types=1);
 const RECIPIENTS = [
     'prayer' => ['info@carloacutisireland.org'],
     'order'  => ['info@carloacutisireland.org'],
+    'relic'  => ['info@carloacutisireland.org'],
 ];
 
 /**
@@ -76,6 +77,26 @@ const FORMS = [
                     . 'order details, discuss payment options, and arrange delivery. Thank you for '
                     . 'your patience, and we look forward to helping you with your Carlo Acutis '
                     . 'merchandise!',
+    ],
+    'relic' => [
+        'title'    => 'Relic visit request',
+        'subject'  => 'Relic visit request from the website',
+        'back'     => 'relicvisit.html',
+        'fields'   => [
+            'parish'  => ['label' => 'Parish or church',  'required' => true,  'type' => 'text'],
+            'diocese' => ['label' => 'Diocese or county', 'required' => true,  'type' => 'text'],
+            'name'    => ['label' => 'Contact name',      'required' => true,  'type' => 'name'],
+            'email'   => ['label' => 'Email',             'required' => true,  'type' => 'email'],
+            'phone'   => ['label' => 'Phone',             'required' => false, 'type' => 'phone'],
+            'timing'  => ['label' => 'Preferred timing',  'required' => false, 'type' => 'text'],
+            'notes'   => ['label' => 'Anything else',     'required' => false, 'type' => 'text'],
+        ],
+        'heading'  => 'Thank you — your parish has been entered.',
+        'message'  => 'We will be in touch by email to help with the arrangements. That '
+                    . 'includes producing a schedule for the visit, subject to approval from '
+                    . 'your parish priest; arranging a meeting with your parish to confirm '
+                    . 'details beforehand; promoting the visit on our website and social '
+                    . 'pages; and providing assistance on the day of the visit.',
     ],
 ];
 

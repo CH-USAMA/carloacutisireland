@@ -1,0 +1,203 @@
+/* ==========================================================================
+   THE REGISTER — the Relic page's grammar.
+   Loads on top of base.css.
+
+   A parish keeps a register: ruled lines, a date, a place, a hand. This page
+   is that, for the relic — and its last line is deliberately blank. It is not
+   a map, a route or a journey tracker: there are no pins, no drawn paths, no
+   progress indicators. Only entries, and the space for the next one.
+   ========================================================================== */
+
+.reg-shell{padding-inline:var(--pad);max-width:1180px;margin-inline:auto}
+
+/* --- Opening -------------------------------------------------------------- */
+.rg-open{padding-block:clamp(4rem,12vh,8rem) clamp(2rem,5vh,3.25rem)}
+.rg-top{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.rg-top a{color:var(--ink-mute);border-bottom:1px solid transparent;transition:color .2s var(--ease),border-color .2s var(--ease)}
+.rg-top a:hover{color:var(--ink);border-bottom-color:var(--rule)}
+
+.rg-title{
+  margin:clamp(2.5rem,8vh,5rem) 0 0;font-family:var(--serif);font-weight:400;
+  font-size:clamp(2.4rem,1.2rem + 6vw,6.4rem);line-height:.98;letter-spacing:-.032em;
+  display:flex;align-items:baseline;gap:.34em;flex-wrap:wrap;
+}
+.rg-title .to{color:var(--oxblood);font-style:normal}
+.rg-lede{
+  margin-top:clamp(1.75rem,4vh,2.75rem);max-width:52ch;
+  font-family:var(--serif);font-size:clamp(1.12rem,1rem + .7vw,1.55rem);
+  line-height:1.5;color:var(--ink-mid);
+}
+
+/* --- Provenance ----------------------------------------------------------
+   The facts a parish priest needs before anything else: what it is, whose it
+   is, on whose authority it travels.
+------------------------------------------------------------------------- */
+.prov{
+  margin-top:clamp(2.5rem,6vh,4rem);padding-top:clamp(1.5rem,4vh,2.25rem);
+  border-top:1px solid var(--ink);
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:1.75rem clamp(1.25rem,2.5vw,2.25rem);
+}
+@media (max-width:860px){.prov{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.prov{grid-template-columns:1fr}}
+.prov dt{
+  font:400 var(--t-meta)/1.5 var(--mono);letter-spacing:.17em;text-transform:uppercase;
+  color:var(--ink-mute);margin-bottom:.5rem;
+}
+.prov dd{margin:0;font-family:var(--serif);font-size:1.06rem;line-height:1.42;color:var(--ink)}
+
+/* --- A plate -------------------------------------------------------------
+   The relic photographs are the largest on the site — but never larger than
+   the files themselves, which top out under 900px. Scale, not upscaling.
+------------------------------------------------------------------------- */
+.rg-plate{margin-block:clamp(3rem,9vh,6rem)}
+.rg-plate figure{margin:0;max-width:780px}
+.rg-plate img{width:100%;filter:saturate(.94)}
+.rg-plate figcaption{
+  margin-top:.9rem;padding-top:.75rem;border-top:1px solid var(--rule);max-width:52ch;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.4rem 1.5rem;align-items:baseline;
+}
+.rg-plate .cap{font-family:var(--serif);font-size:1.02rem;line-height:1.45;color:var(--ink-mid)}
+.rg-plate .ref{font:400 calc(var(--t-meta) * .95)/1.5 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--ink-mute);text-align:right}
+.rg-plate--wide figure{max-width:100%}
+
+/* --- The register --------------------------------------------------------
+   Ruled entries. A hand number, a place, a note, a date. Nothing else.
+------------------------------------------------------------------------- */
+.reg-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  padding-bottom:.9rem;border-bottom:1px solid var(--ink);
+}
+.reg-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,1.1rem + 1.7vw,2.5rem);letter-spacing:-.015em}
+.reg-head p{margin:0}
+
+.entry{
+  display:grid;grid-template-columns:3.25rem minmax(0,1fr) 12rem;
+  gap:.35rem clamp(1rem,2.4vw,2.25rem);align-items:baseline;
+  padding:clamp(1.5rem,3.5vh,2.4rem) 0;border-bottom:1px solid var(--rule-soft);
+}
+.entry .hand{font:400 var(--t-meta)/1.5 var(--mono);letter-spacing:.12em;color:var(--ink-mute);padding-top:.5em}
+.entry .place{
+  font-family:var(--serif);font-size:clamp(1.3rem,1.05rem + 1vw,2.05rem);
+  line-height:1.14;letter-spacing:-.016em;color:var(--ink);
+}
+.entry .note{margin:.55rem 0 0;font-size:.98rem;line-height:1.55;color:var(--ink-mid);max-width:52ch}
+.entry .when{
+  font:400 var(--t-meta)/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-mute);text-align:right;padding-top:.7em;
+}
+.entry .when b{font-weight:400;color:var(--ink-mid);display:block}
+.entry--soon .when b{color:var(--oxblood)}
+
+/* An honest note: the register is not the whole history. */
+.reg-note{
+  padding:clamp(1.25rem,3vh,2rem) 0;border-bottom:1px solid var(--rule-soft);
+  display:grid;grid-template-columns:3.25rem minmax(0,1fr);gap:clamp(1rem,2.4vw,2.25rem);
+}
+.reg-note p{margin:0;font-style:italic;font-family:var(--serif);color:var(--ink-mute);max-width:56ch;line-height:1.55}
+
+/* --- The open line -------------------------------------------------------
+   The register's last entry has not been written. This is the page's whole
+   argument, so it is a ruled blank — not a button.
+------------------------------------------------------------------------- */
+.open-line{
+  display:grid;grid-template-columns:3.25rem minmax(0,1fr) 12rem;
+  gap:.35rem clamp(1rem,2.4vw,2.25rem);align-items:baseline;
+  padding:clamp(2.25rem,5.5vh,3.75rem) 0 clamp(1.75rem,4vh,2.75rem);
+  border-bottom:1px solid var(--ink);
+  text-decoration:none;position:relative;
+}
+.open-line .hand{font:400 var(--t-meta)/1.5 var(--mono);letter-spacing:.12em;color:var(--oxblood);padding-top:.5em}
+.open-line .place{
+  font-family:var(--serif);font-size:clamp(1.3rem,1.05rem + 1vw,2.05rem);
+  line-height:1.14;letter-spacing:-.016em;color:var(--ink-mute);
+  border-bottom:1px dashed var(--rule);padding-bottom:.35rem;
+  transition:color .3s var(--ease),border-color .3s var(--ease);
+}
+a.open-line:hover .place{color:var(--ink);border-bottom-color:var(--oxblood);border-bottom-style:solid}
+.open-line .note{margin:.6rem 0 0;font-size:.98rem;color:var(--ink-mid)}
+.open-line .when{
+  font:400 var(--t-meta)/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--oxblood);text-align:right;padding-top:.7em;
+  display:inline-flex;justify-content:flex-end;gap:.7rem;
+  transition:gap .3s var(--ease);
+}
+a.open-line:hover .when{gap:1.2rem}
+
+/* --- Request -------------------------------------------------------------- */
+.ask{padding-block:clamp(3.5rem,9vh,6rem)}
+.ask-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(2rem,5vw,4.5rem);align-items:start}
+@media (max-width:900px){.ask-grid{grid-template-columns:1fr;gap:2.5rem}}
+.ask h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,1.15rem + 1.9vw,2.7rem);line-height:1.08;letter-spacing:-.02em}
+.ask-say{margin-top:1.25rem;font-family:var(--serif);font-size:1.08rem;line-height:1.55;color:var(--ink-mid);max-width:40ch}
+.ask-what{margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--rule)}
+.ask-what dt{font:400 var(--t-meta)/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:.35rem}
+.ask-what dd{margin:0 0 1.1rem;font-size:.98rem;line-height:1.55;color:var(--ink-mid)}
+
+.form-sheet{border:1px solid var(--ink);padding:clamp(1.5rem,3.5vw,2.5rem);background:var(--paper)}
+.fld{margin-bottom:1.15rem}
+.fld label{
+  display:block;margin-bottom:.45rem;font:400 var(--t-meta)/1.5 var(--mono);
+  letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mid);
+}
+.fld .req{color:var(--oxblood)}
+.fld input,.fld textarea{
+  width:100%;padding:.75rem .85rem;font:400 1rem/1.5 var(--sans);color:var(--ink);
+  background:var(--white);border:1px solid var(--rule);border-radius:0;
+  transition:border-color .22s var(--ease),box-shadow .22s var(--ease);
+}
+.fld textarea{min-height:104px;resize:vertical;font-family:var(--serif)}
+.fld input:focus,.fld textarea:focus{outline:0;border-color:var(--ink);box-shadow:0 0 0 2px rgba(140,58,43,.14)}
+.fld-pair{display:grid;grid-template-columns:1fr 1fr;gap:0 1.1rem}
+@media (max-width:560px){.fld-pair{grid-template-columns:1fr}}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.sheet-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--rule)}
+.sheet-hint{font:400 calc(var(--t-meta) * .95)/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
+.enter{
+  font:400 var(--t-meta)/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+  background:var(--ink);color:var(--paper);border:1px solid var(--ink);
+  padding:.95rem 1.6rem;cursor:pointer;
+  display:inline-flex;align-items:center;gap:.8rem;
+  transition:background .25s var(--ease),color .25s var(--ease),gap .25s var(--ease);
+}
+.enter:hover{background:var(--oxblood);border-color:var(--oxblood);gap:1.3rem}
+
+/* --- The programme -------------------------------------------------------
+   Set as an order of service, because that is what it is.
+------------------------------------------------------------------------- */
+.prog{padding-block:clamp(3rem,7vh,5rem);border-top:1px solid var(--ink)}
+.prog h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,1.1rem + 1.5vw,2.3rem);letter-spacing:-.015em;margin-bottom:.9rem}
+.prog-intro{font-family:var(--serif);font-size:1.06rem;line-height:1.55;color:var(--ink-mid);max-width:54ch;margin-bottom:2.5rem}
+.order{max-width:38ch}
+.order li{
+  display:grid;grid-template-columns:auto 1fr;gap:1.25rem;align-items:baseline;
+  padding:.7rem 0;border-bottom:1px solid var(--rule-soft);
+}
+.order li:last-child{border-bottom:0}
+.order .n{font:400 calc(var(--t-meta) * .95)/1.5 var(--mono);letter-spacing:.12em;color:var(--ink-mute)}
+.order .w{font-family:var(--serif);font-size:1.1rem;color:var(--ink)}
+.prog-note{margin-top:1.75rem;font-size:.95rem;color:var(--ink-mute);max-width:46ch;font-style:italic;font-family:var(--serif)}
+
+/* --- Colophon (shared shape with About, different content) ---------------- */
+.colophon{margin-top:clamp(2rem,5vh,3rem);border-top:1px solid var(--ink);padding-block:clamp(2.25rem,5vh,3.25rem) clamp(3rem,7vh,4.5rem)}
+.colophon-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.75rem clamp(1.5rem,3vw,3rem)}
+@media (max-width:760px){.colophon-grid{grid-template-columns:1fr}}
+.colophon h2{font:400 var(--t-meta)/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:1rem}
+.colophon ul li{margin-bottom:.55rem}
+.colophon a{border-bottom:1px solid transparent;transition:color .2s var(--ease),border-color .2s var(--ease)}
+.colophon a:hover{color:var(--oxblood);border-bottom-color:var(--oxblood)}
+.colophon .cont{font-family:var(--serif);font-size:1.05rem;line-height:1.5}
+.colophon .cont a{border-bottom-color:var(--rule)}
+.colophon-end{
+  margin-top:clamp(2rem,5vh,3rem);padding-top:1.25rem;border-top:1px solid var(--rule-soft);
+  display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between;
+  font:400 calc(var(--t-meta) * .95)/1.6 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--ink-mute);
+}
+
+/* --- Narrow --------------------------------------------------------------- */
+@media (max-width:760px){
+  .entry,.open-line{grid-template-columns:3.25rem minmax(0,1fr)}
+  .entry .when,.open-line .when{grid-column:2;text-align:left;justify-content:flex-start;padding-top:.55em}
+  .entry .when b{display:inline}
+  .entry .when b::after{content:" · "}
+}

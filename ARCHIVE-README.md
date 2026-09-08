@@ -109,6 +109,22 @@ images hidden, the identity still holds).
 
 Pages are 7–26 KB of HTML each. Prayer and Schools ship no JavaScript at all.
 
+### The Weebly theme is gone
+
+The redesign loads only `base.css`, one page stylesheet, and seven local woff2 files.
+Nothing referenced `cdn2/cdn11/cdn3.editmysite.com`, `files/` or `cdn-cgi/` any more, so
+those 232 files — the whole Weebly framework, including jQuery 1.8.3 — have been deleted
+from this branch, along with the Lora and Montserrat faces left over from the first
+redesign. All of it remains on `main` and under the tag `v1-weebly-archive`.
+
+### One thing deliberately not deleted
+
+About 16 MB of `uploads/` is no longer displayed anywhere — photographs the old Weebly
+pages used and the redesign does not. They are the organisation's own pictures, so they
+have been kept rather than pruned: nothing ever requests them, they only add deploy
+weight, and the Voices page in particular is built to take more of them later. Remove
+them only on the client's say-so.
+
 ---
 
 ---

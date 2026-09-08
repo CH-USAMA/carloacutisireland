@@ -1,0 +1,239 @@
+/* ==========================================================================
+   THE MONOGRAPH — the About page's grammar.
+   Loads on top of base.css.
+
+   The homepage says "discover the archive". This says "read the life", so the
+   grammar inverts: Cardo becomes the reading face, Lato drops to marginalia,
+   and the page is one continuous column with a margin carrying dates, small
+   plates and Carlo's own words. No records, no numbering, no filters, no cards.
+   ========================================================================== */
+
+/* --- The reading page ----------------------------------------------------
+   A text column with a margin beside it. The margin is the apparatus: the
+   running date, inset plates, marginal quotations — as in a printed monograph.
+------------------------------------------------------------------------- */
+:root{
+  --marg:200px;                       /* width of the marginal column */
+  --marg-gap:clamp(1.5rem,3.2vw,3.25rem);
+  --measure:58ch;
+}
+
+.mono-shell{padding-inline:var(--pad);max-width:1180px;margin-inline:auto}
+
+/* --- Opening -------------------------------------------------------------
+   One arresting fact, then the essay. No frontispiece — that belongs to the
+   homepage — and no standfirst dressed up as a hero.
+------------------------------------------------------------------------- */
+.open{padding-block:clamp(4rem,12vh,8rem) clamp(2.5rem,6vh,4rem)}
+.open-top{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.open-top a{color:var(--ink-mute);border-bottom:1px solid transparent;transition:color .2s var(--ease),border-color .2s var(--ease)}
+.open-top a:hover{color:var(--ink);border-bottom-color:var(--rule)}
+
+.age{
+  margin:clamp(3rem,9vh,6rem) 0 0;
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(4rem,2rem + 11vw,12.5rem);
+  line-height:.82;letter-spacing:-.045em;color:var(--ink);
+}
+.age-span{
+  margin-top:clamp(1.25rem,3vh,2rem);
+  font:400 var(--t-meta)/1 var(--mono);letter-spacing:.34em;text-transform:uppercase;
+  color:var(--ink-mute);
+}
+.age-span b{font-weight:400;color:var(--oxblood)}
+
+.open-lede{
+  margin-top:clamp(2.5rem,6vh,4rem);max-width:54ch;
+  font-family:var(--serif);font-size:clamp(1.2rem,1.05rem + .8vw,1.7rem);
+  line-height:1.46;color:var(--ink-mid);
+}
+
+/* --- Movements -----------------------------------------------------------
+   Each movement is a grid: the mark in the margin, the prose beside it. The
+   mark is sticky, so the date stays level with the passage being read and
+   hands over to the next of its own accord. That is the whole date rail —
+   no script, and it degrades to a plain heading.
+------------------------------------------------------------------------- */
+.mv{
+  display:grid;grid-template-columns:var(--marg) minmax(0,var(--measure));
+  column-gap:var(--marg-gap);
+  padding-block:clamp(2rem,5vh,3.5rem);
+}
+.mv-mark{
+  grid-column:1;align-self:start;
+  position:sticky;top:clamp(1.5rem,11vh,6rem);
+  font:400 var(--t-meta)/1.7 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-mute);
+}
+.mv-mark .yr{
+  display:block;font-family:var(--serif);font-size:1.85rem;line-height:1;
+  letter-spacing:-.02em;color:var(--ink);margin-bottom:.5rem;text-transform:none;
+}
+.mv-body{grid-column:2}
+.mv-body p{
+  font-family:var(--serif);
+  font-size:clamp(1.06rem,1rem + .34vw,1.26rem);line-height:1.66;
+  color:var(--ink);margin:0 0 1.15em;
+}
+.mv-body p:last-child{margin-bottom:0}
+.mv-body em{font-style:italic}
+
+/* The essay's first paragraph carries a little more weight. */
+.mv--first .mv-body > p:first-child{font-size:clamp(1.16rem,1.05rem + .55vw,1.45rem);line-height:1.54}
+
+/* --- Marginalia ----------------------------------------------------------
+   Asides sit in the flow at the right point, then outdent into the margin on
+   wide screens — the classic way a monograph puts a plate or a quotation
+   level with the sentence it belongs to. On narrow screens they fall inline.
+------------------------------------------------------------------------- */
+.marg{margin:2rem 0}
+@media (min-width:1000px){
+  .marg{
+    float:right;clear:right;width:190px;
+    margin-right:calc((190px + var(--marg-gap)) * -1);
+    margin-top:.35rem;margin-bottom:1.9rem;
+  }
+}
+
+/* A plate: small, because the only photographs of Carlo that exist are small.
+   Their modesty is the point — they are not upscaled. */
+.marg figure{margin:0}
+.marg img{width:100%;filter:saturate(.9)}
+.marg figcaption{
+  margin-top:.7rem;padding-top:.6rem;border-top:1px solid var(--rule-soft);
+  font:400 calc(var(--t-meta) * .95)/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-mute);
+}
+
+/* His own words, set in the margin beside the prose that describes them. */
+.marg-quote{
+  margin:0;padding-left:.9rem;border-left:1px solid var(--oxblood);
+  font-family:var(--serif);font-style:italic;font-size:1.02rem;line-height:1.42;
+  color:var(--ink-mid);
+}
+.marg-quote cite{
+  display:block;margin-top:.7rem;font:400 calc(var(--t-meta) * .95)/1.5 var(--mono);
+  letter-spacing:.13em;text-transform:uppercase;font-style:normal;color:var(--ink-mute);
+}
+
+/* --- A held line ---------------------------------------------------------
+   Where a sentence deserves the width of the page rather than the column.
+------------------------------------------------------------------------- */
+.held{
+  padding-block:clamp(4rem,12vh,9rem);
+  margin-left:calc(var(--marg) + var(--marg-gap));
+}
+.held blockquote{
+  margin:0;font-family:var(--serif);font-style:italic;
+  font-size:clamp(1.6rem,1rem + 3.1vw,3.9rem);line-height:1.12;letter-spacing:-.02em;
+  color:var(--ink);text-wrap:balance;max-width:19ch;
+}
+.held cite{
+  display:block;margin-top:1.5rem;font:400 var(--t-meta)/1.6 var(--mono);
+  letter-spacing:.16em;text-transform:uppercase;font-style:normal;color:var(--ink-mute);
+}
+@media (max-width:999px){.held{margin-left:0}}
+
+/* --- The death ------------------------------------------------------------
+   The quietest passage on the site. The margin empties, the measure narrows,
+   and a great deal of nothing is left around it on purpose.
+------------------------------------------------------------------------- */
+.hush{
+  padding-block:clamp(6rem,18vh,13rem);
+  margin-left:calc(var(--marg) + var(--marg-gap));
+  max-width:46ch;
+}
+@media (max-width:999px){.hush{margin-left:0}}
+.hush p{
+  font-family:var(--serif);font-size:clamp(1.06rem,1rem + .34vw,1.26rem);
+  line-height:1.72;color:var(--ink);margin:0 0 1.2em;
+}
+.hush p.hush-last{
+  margin-top:clamp(3rem,9vh,6rem);
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(1.35rem,1rem + 1.9vw,2.5rem);line-height:1.22;letter-spacing:-.015em;
+  color:var(--ink);max-width:17ch;
+}
+.hush p.hush-end{
+  margin-top:clamp(5rem,15vh,11rem);
+  font:400 var(--t-meta)/1.8 var(--mono);letter-spacing:.26em;text-transform:uppercase;
+  color:var(--ink-mute);
+}
+.hush p.hush-end b{font-weight:400;color:var(--ink-mid);display:block}
+
+/* --- Turn to Ireland ----------------------------------------------------- */
+.turn{
+  margin-left:calc(var(--marg) + var(--marg-gap));max-width:var(--measure);
+  padding-block:clamp(3rem,8vh,5rem);border-top:1px solid var(--ink);
+}
+@media (max-width:999px){.turn{margin-left:0}}
+.turn h2{font-family:var(--serif);font-size:clamp(1.4rem,1.1rem + 1.5vw,2.3rem);font-weight:400;letter-spacing:-.015em}
+.turn p{font-family:var(--serif);font-size:1.1rem;line-height:1.62;color:var(--ink-mid);margin:1.15rem 0 0}
+.turn-links{display:flex;flex-wrap:wrap;gap:.5rem 2rem;margin-top:2rem}
+.turn-links a{
+  font:400 var(--t-meta)/1 var(--mono);letter-spacing:.17em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:.7rem;
+  border-bottom:1px solid var(--rule);padding-bottom:.5rem;
+  transition:color .22s var(--ease),border-color .22s var(--ease),gap .22s var(--ease);
+}
+.turn-links a:hover{color:var(--oxblood);border-bottom-color:var(--oxblood);gap:1.1rem}
+
+/* --- Sources -------------------------------------------------------------
+   The external material lives here, where it is relevant, rather than in a
+   Resources page with nothing on its shelves.
+------------------------------------------------------------------------- */
+.sources{
+  margin-left:calc(var(--marg) + var(--marg-gap));max-width:var(--measure);
+  padding-block:clamp(2.5rem,6vh,4rem);
+}
+@media (max-width:999px){.sources{margin-left:0}}
+.sources h2{
+  font:400 var(--t-meta)/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink-mute);margin-bottom:1.75rem;
+}
+.src{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.4rem 1.5rem;
+  padding:1.05rem 0;border-top:1px solid var(--rule-soft);align-items:baseline;
+}
+.src:last-of-type{border-bottom:1px solid var(--rule-soft)}
+.src .t{font-family:var(--serif);font-size:1.08rem;line-height:1.35}
+.src .t a{border-bottom:1px solid var(--rule);transition:color .2s var(--ease),border-color .2s var(--ease)}
+.src .t a:hover{color:var(--oxblood);border-bottom-color:var(--oxblood)}
+.src .m{font:400 calc(var(--t-meta) * .95)/1.5 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--ink-mute);text-align:right}
+.src .d{grid-column:1/-1;font-size:.95rem;color:var(--ink-mid);font-family:var(--sans)}
+
+/* --- Colophon ------------------------------------------------------------
+   A monograph ends with a colophon, not a marketing footer.
+------------------------------------------------------------------------- */
+.colophon{
+  margin-top:clamp(3rem,8vh,5rem);border-top:1px solid var(--ink);
+  padding-block:clamp(2.25rem,5vh,3.25rem) clamp(3rem,7vh,4.5rem);
+}
+.colophon-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.75rem clamp(1.5rem,3vw,3rem)}
+@media (max-width:760px){.colophon-grid{grid-template-columns:1fr;gap:1.75rem}}
+.colophon h2{
+  font:400 var(--t-meta)/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink-mute);margin-bottom:1rem;
+}
+.colophon ul li{margin-bottom:.55rem}
+.colophon a{border-bottom:1px solid transparent;transition:color .2s var(--ease),border-color .2s var(--ease)}
+.colophon a:hover{color:var(--oxblood);border-bottom-color:var(--oxblood)}
+.colophon .cont{font-family:var(--serif);font-size:1.05rem;line-height:1.5}
+.colophon .cont a{border-bottom-color:var(--rule)}
+.colophon-end{
+  margin-top:clamp(2rem,5vh,3rem);padding-top:1.25rem;border-top:1px solid var(--rule-soft);
+  display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between;
+  font:400 calc(var(--t-meta) * .95)/1.6 var(--mono);letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-mute);
+}
+
+/* --- Narrow screens ------------------------------------------------------- */
+@media (max-width:999px){
+  .mv{grid-template-columns:minmax(0,1fr);row-gap:1.25rem}
+  .mv-mark{grid-column:1;position:static;
+    display:flex;align-items:baseline;gap:1rem;
+    padding-bottom:.85rem;border-bottom:1px solid var(--rule-soft)}
+  .mv-mark .yr{margin-bottom:0;font-size:1.5rem}
+  .mv-body{grid-column:1}
+  .marg{max-width:280px}
+}

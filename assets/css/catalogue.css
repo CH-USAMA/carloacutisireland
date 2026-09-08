@@ -1,117 +1,11 @@
 /* ==========================================================================
-   SAINT CARLO ACUTIS · IRELAND — THE CATALOGUE
-   An archival catalogue translated into a digital medium.
-
-   Rules, numbering, marginalia and space do the work. There are no cards,
-   no rounded boxes, no drop shadows on the page and no centred section
-   headers. The one immersive surface is the PLATE view, where a record
-   gives way to the photograph that evidences it.
+   THE CATALOGUE — the home page's grammar.
+   Loads on top of base.css. Records, filtering, plates.
    ========================================================================== */
-
-/* --- Type ---------------------------------------------------------------
-   Cardo — a scholarly humanist serif, drawn for classicists and medievalists.
-   Lato — quiet sans for reading.
-   Monospace is the system stack: costs nothing to download, and a catalogue's
-   metadata has always been set in a typewriter face.
-------------------------------------------------------------------------- */
-@font-face{font-family:Cardo;font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/cardo-regular.woff2) format('woff2')}
-@font-face{font-family:Cardo;font-style:italic;font-weight:400;font-display:swap;src:url(../fonts/cardo-italic.woff2) format('woff2')}
-@font-face{font-family:Cardo;font-style:normal;font-weight:700;font-display:swap;src:url(../fonts/cardo-bold.woff2) format('woff2')}
-@font-face{font-family:Lato;font-style:normal;font-weight:300;font-display:swap;src:url(../fonts/lato-300.woff2) format('woff2')}
-@font-face{font-family:Lato;font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/lato-400.woff2) format('woff2')}
-@font-face{font-family:Lato;font-style:italic;font-weight:400;font-display:swap;src:url(../fonts/lato-400i.woff2) format('woff2')}
-@font-face{font-family:Lato;font-style:normal;font-weight:700;font-display:swap;src:url(../fonts/lato-700.woff2) format('woff2')}
-
-:root{
-  /* Warm ivory stock, warm black ink, stone greys, one sharp oxblood.
-     Deliberately not gold-on-teal. Petrol survives only in the plate view,
-     where the archive goes dark around a photograph. */
-  --paper:#F2EDE4;
-  --paper-deep:#EAE3D7;
-  --ink:#191713;
-  --ink-mid:#4A443A;
-  --ink-mute:#7C7364;
-  --rule:#D2C8B8;
-  --rule-soft:#E0D8CA;
-  --oxblood:#8C3A2B;
-  --petrol:#0E1F22;
-
-  --serif:Cardo,'Iowan Old Style',Georgia,serif;
-  --sans:Lato,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,'DejaVu Sans Mono',monospace;
-
-  --spine:74px;                 /* width of the catalogue spine */
-  --pad:clamp(1.25rem,3.4vw,3.25rem);
-  --measure:62ch;
-
-  --t-meta:clamp(.625rem,.58rem + .12vw,.6875rem);
-  --t-body:clamp(.95rem,.9rem + .2vw,1.0625rem);
-  --t-title:clamp(1.05rem,.95rem + .5vw,1.4rem);
-  --t-title-lg:clamp(1.5rem,1.1rem + 1.8vw,2.6rem);
-  --t-display:clamp(2.5rem,1.2rem + 5.6vw,6rem);
-  --t-numeral:clamp(2.6rem,1.4rem + 5vw,5.5rem);
-
-  --ease:cubic-bezier(.2,.7,.3,1);
-}
-
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{
-  margin:0;background:var(--paper);color:var(--ink);
-  font:var(--t-body)/1.66 var(--sans);
-  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-  padding-left:var(--spine);
-}
-/* Paper tooth. A single tiled SVG, ~0.9KB, no image request. */
-body::before{
-  content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.5;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
-  mix-blend-mode:multiply;
-}
-img{display:block;max-width:100%;height:auto}
-h1,h2,h3{margin:0;font-weight:400;line-height:1.06;letter-spacing:-.012em;font-family:var(--serif)}
-p{margin:0 0 1em}
-p:last-child{margin-bottom:0}
-a{color:inherit;text-decoration:none}
-ul{margin:0;padding:0;list-style:none}
-button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
-:focus-visible{outline:1.5px solid var(--oxblood);outline-offset:3px}
-.plate:focus{outline:0}
-
-.mono{font:400 var(--t-meta)/1.5 var(--mono);letter-spacing:.13em;text-transform:uppercase}
-.mute{color:var(--ink-mute)}
-
-.skip{position:absolute;left:-9999px;top:0;z-index:60;background:var(--ink);color:var(--paper);padding:.7rem 1.1rem}
-.skip:focus{left:calc(var(--spine) + 1rem)}
-
-/* ==========================================================================
-   THE SPINE — the fixed left edge of the catalogue.
-   A book spine, not a sidebar: a hairline, a vertical wordmark, a count.
-   ========================================================================== */
-.spine{
-  position:fixed;top:0;left:0;bottom:0;width:var(--spine);z-index:40;
-  border-right:1px solid var(--rule-soft);
-  display:flex;flex-direction:column;align-items:center;justify-content:space-between;
-  padding:1.15rem 0;background:var(--paper);
-}
-.spine-mark{width:9px;height:9px;flex-shrink:0;opacity:.5}
-.spine-mark line{stroke:var(--ink-mute);stroke-width:1}
-.spine-word{
-  writing-mode:vertical-rl;transform:rotate(180deg);
-  font:400 var(--t-meta)/1 var(--mono);letter-spacing:.36em;text-transform:uppercase;
-  color:var(--ink-mute);white-space:nowrap;
-}
-.spine-word b{font-weight:400;color:var(--ink-mid)}
-.spine-count{
-  writing-mode:vertical-rl;transform:rotate(180deg);
-  font:400 calc(var(--t-meta) * .92)/1 var(--mono);letter-spacing:.2em;
-  color:var(--ink-mute);opacity:.65;
-}
 
 /* ==========================================================================
    OPENING — restrained. States who and what, then hands over to the index.
    ========================================================================== */
-.shell{padding-inline:var(--pad);max-width:1180px;margin-inline:auto}
 
 .opening{padding-block:clamp(4.5rem,13vh,9rem) clamp(3rem,7vh,5rem);position:relative;z-index:2}
 .opening-top{
@@ -420,10 +314,6 @@ a.rec--act:hover{background:var(--paper-deep)}
 .rec.is-out{opacity:0;pointer-events:none;position:absolute;visibility:hidden}
 .index.is-sorting .rec{transition:transform .52s var(--ease),opacity .34s var(--ease)}
 
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
-}
-
 /* ==========================================================================
    Narrow screens — the spine lies down along the top edge.
    ========================================================================== */
@@ -437,15 +327,6 @@ a.rec--act:hover{background:var(--paper-deep)}
   .relic-grid{grid-template-columns:1fr;gap:1.1rem}
 }
 @media (max-width:640px){
-  :root{--spine:0px}
-  body{padding-left:0;padding-top:46px}
-  .spine{
-    top:0;left:0;right:0;bottom:auto;width:auto;height:46px;
-    flex-direction:row;padding:0 var(--pad);
-    border-right:0;border-bottom:1px solid var(--rule);
-  }
-  .spine-word,.spine-count{writing-mode:horizontal-tb;transform:none}
-  .spine-word{letter-spacing:.26em}
   .controls{top:46px;flex-direction:column;align-items:flex-start;gap:.85rem}
   .search input,.search input:focus,.search input:not(:placeholder-shown){width:auto;flex:1 1 auto;min-width:0}
   .search{width:100%}
